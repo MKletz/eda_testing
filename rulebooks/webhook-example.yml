@@ -6,7 +6,7 @@
 
   sources:
     - ansible.eda.webhook:
-        host: 0.0.0.0
+        host: 192.168.1.194
         port: 5000
 
   ## Define the conditions we are looking for
