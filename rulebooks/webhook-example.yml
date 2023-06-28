@@ -4,8 +4,8 @@
   sources:
     - ansible.eda.aws_sqs_queue:
         region: us-east-2
-        name: eda-queue
-        delay_seconds: 30
+        name: eda
+        #delay_seconds: 0
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
 
