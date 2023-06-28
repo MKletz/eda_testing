@@ -5,7 +5,7 @@
   ## Define our source for events
 
   sources:
-    - ansible.eda.aws_sqs:
+    - ansible.eda.aws_sqs_queue:
         region: us-east-2
         name: eda-queue
         delay_seconds: 10
