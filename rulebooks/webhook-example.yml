@@ -1,14 +1,11 @@
 ---
 - name: Listen for events on an AWS SQS Queue
   hosts: localhost
-
-  ## Define our source for events
-
   sources:
     - ansible.eda.aws_sqs_queue:
         region: us-east-2
         name: eda-queue
-        delay_seconds: 10
+        delay_seconds: 30
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
 
