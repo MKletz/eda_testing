@@ -9,6 +9,8 @@
         region: us-east-2
         name: eda-queue
         delay_seconds: 10
+        access_key: "{{ access_key }}"
+        secret_key: "{{ secret_key }}"
 
   ## Define the conditions we are looking for
   rules:
