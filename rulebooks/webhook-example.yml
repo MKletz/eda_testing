@@ -12,7 +12,7 @@
   ## Define the conditions we are looking for
   rules:
     - name: Run template
-      condition: json.load(event.body)["Records"]["eventName"] == "ObjectCreated:Put"
+      condition: event.body.headers.Records.eventName == "ObjectCreated:Put"
 
   ## Define the action we should take should the condition be met
 
