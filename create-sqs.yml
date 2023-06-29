@@ -16,6 +16,6 @@
 
   - name: Create S3 bucket 
     amazon.aws.s3_bucket:
-      name: eda
+      name: eda123
       region: us-east-2
       state: present
