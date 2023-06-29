@@ -7,7 +7,7 @@
   - name: Create SQS queue 
     community.aws.sqs_queue:
       name: eda
-      region: us-east-2
+      region: "{{ region }}"
       default_visibility_timeout: 30
       message_retention_period: 86400
       maximum_message_size: 1024
@@ -17,12 +17,13 @@
   - name: Create S3 bucket 
     amazon.aws.s3_bucket:
       name: "{{ s3_bucket_name }}"
-      region: us-east-2
+      region: "{{ region }}"
       state: present
 
   - name: Create a topic permitting S3 bucket notifications
     community.aws.sns_topic:
       name: "S3Notifications"
+      region: "{{ region }}"
       state: present
       display_name: "S3 notifications SNS topic"
       policy:
