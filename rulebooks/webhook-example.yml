@@ -4,7 +4,7 @@
   sources:
     - ansible.eda.aws_sqs_queue:
         region: us-east-2
-        name: eda
+        name: eda_s3_notifications
         delay_seconds: 10
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
@@ -12,11 +12,11 @@
   ## Define the conditions we are looking for
   rules:
     - name: Run template
-      condition: event.body == "Ansible"
+      condition: json.load(event.body)["Records"]["eventName"] == "ObjectCreated:Put"
 
   ## Define the action we should take should the condition be met
 
       action:
         run_job_template:
-          name: Demo Job Template
+          name: Cat Fact
           organization: Default
