@@ -6,10 +6,10 @@
 
   - name: Create SQS queue 
     community.aws.sqs_queue:
-      name: eda-queue
+      name: eda
       region: us-east-2
       default_visibility_timeout: 30
       message_retention_period: 86400
       maximum_message_size: 1024
-      delivery_delay: 30
+      delivery_delay: 0
       receive_message_wait_time: 20
