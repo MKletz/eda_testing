@@ -41,5 +41,5 @@
       region: "{{ region }}"
       event_name: on_file_add_or_remove
       bucket_name: "{{ s3_bucket_name }}"
-      queue_arn: sqs_details.queue_arn
+      queue_arn: "{{ sqs_details.queue_arn }}"
       events: ["s3:ObjectCreated:*"]
