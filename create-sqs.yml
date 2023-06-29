@@ -16,6 +16,25 @@
 
   - name: Create S3 bucket 
     amazon.aws.s3_bucket:
-      name: eda123
+      name: "{{ s3_bucket_name }}"
       region: us-east-2
       state: present
+
+  - name: Create a topic permitting S3 bucket notifications
+    community.aws.sns_topic:
+      name: "S3Notifications"
+      state: present
+      display_name: "S3 notifications SNS topic"
+      policy:
+        Id: s3-topic-policy
+        Version: 2012-10-17
+        Statement:
+          - Sid: Statement-id
+            Effect: Allow
+            Resource: "arn:aws:sns:*:*:S3Notifications"
+            Principal:
+              Service: s3.amazonaws.com
+            Action: sns:Publish
+            Condition:
+              ArnLike:
+                aws:SourceArn: "arn:aws:s3:*:*:{{ s3_bucket_name }}"
