@@ -13,3 +13,8 @@
       maximum_message_size: 1024
       delivery_delay: 0
       receive_message_wait_time: 20
+
+  - name: Create S3 bucket 
+    amazon.aws.s3_bucket:
+      name: eda
+      state: present
