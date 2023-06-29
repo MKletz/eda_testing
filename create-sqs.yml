@@ -33,3 +33,13 @@
             Condition:
               ArnLike:
                 aws:SourceArn: "arn:aws:s3:*:*:{{ s3_bucket_name }}"
+    register: sqs_details
+
+  - name: Setup bucket event notification to SQS
+    community.aws.s3_bucket_notification:
+      state: present
+      region: "{{ region }}"
+      event_name: on_file_add_or_remove
+      bucket_name: "{{ s3_bucket_name }}"
+      queue_arn: sqs_details.queue_arn
+      events: ["s3:ObjectCreated:*"]
