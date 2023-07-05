@@ -10,4 +10,4 @@
 
   - name: Print cat_fact
     debug:
-      msg: "{{ cat_fact.json.fact }}"
+      msg: "{{ eda_event_body }}"
