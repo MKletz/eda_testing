@@ -9,10 +9,9 @@
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
 
-  ## Define the conditions we are looking for
   rules:
     - name: Run template
-      condition: "ObjectCreated:Put" in event.body
+      condition: event.body 
       action:
         run_job_template:
           name: Cat Fact
