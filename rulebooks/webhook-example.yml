@@ -16,3 +16,6 @@
         run_job_template:
           name: Cat Fact
           organization: Default
+          job_args:
+              extra_vars:
+                eda_event_body: "{{ event.body }}"
