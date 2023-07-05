@@ -12,10 +12,7 @@
   ## Define the conditions we are looking for
   rules:
     - name: Run template
-      condition: event.body['Records']['eventName'] == "ObjectCreated:Put"
-
-  ## Define the action we should take should the condition be met
-
+      condition: "ObjectCreated:Put" in event.body
       action:
         run_job_template:
           name: Cat Fact
