@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: jump01.mikekletz.com
   gather_facts: false
   tasks:
 
