@@ -1,6 +1,7 @@
 ---
 - hosts: jump01.mikekletz.com
   gather_facts: false
+  become: true
   tasks:
 
   - name: Install AWS Python packages
