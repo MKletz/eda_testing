@@ -16,4 +16,4 @@
       object: "/{{ item.s3.object.key }}"
       dest: "/usr/local/{{ item.s3.object.key }}"
       mode: get
-    with_items: ansible_eda.event.body.Records
+    with_list: ansible_eda.event.body.Records
