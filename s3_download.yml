@@ -3,6 +3,12 @@
   gather_facts: false
   tasks:
 
+  - name: Install AWS Python packages
+    pip:
+      name:
+        - botocore
+        - boto3
+
   - name: Get new files from S3
     amazon.aws.s3_object:
       bucket: "{{ item.s3.bucket.name }}"
