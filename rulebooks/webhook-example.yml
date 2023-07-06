@@ -8,13 +8,10 @@
         delay_seconds: 10
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
-      filters:
-        json_filter:
-          include_keys: ['eventName']
 
   rules:
     - name: Run template
-      condition: event.body != "poop"
+      condition: event.body.Records is selectattr('eventName', '==', 'ObjectCreated:Put')
       action:
         debug:
           msg: event.body
