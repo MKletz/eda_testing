@@ -18,5 +18,5 @@
           organization: Default
           job_args:
               extra_vars:
-                #file_names: "{{ event.body.Records }}"
-                test: "poop"
+                file_names: "{{ event.body.Records }}"
+                test: "test"
