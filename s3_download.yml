@@ -6,7 +6,7 @@
   
   - name: Print
     ansible.builtin.debug:
-      var: result
+      var: ansible_eda.event.body.Records
 
 
   - name: Get new files from S3
