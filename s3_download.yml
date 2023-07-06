@@ -4,6 +4,11 @@
   gather_facts: false
   tasks:
   
+  - name: Print
+    ansible.builtin.debug:
+      var: result
+
+
   - name: Get new files from S3
     amazon.aws.s3_object:
       bucket: "{{ s3_bucket_name }}"
