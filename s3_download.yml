@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  
+  - name: Get new files from S3
+    amazon.aws.s3_object:
+      bucket: "{{ s3_bucket_name }}"
+      region: "{{ region }}"
+      object: "/{{ item.s3.object.key }}"
+      dest: "/usr/local/{{ item.s3.object.key }}"
+      mode: get
+    with_items: sqs_records
