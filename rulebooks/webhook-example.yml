@@ -14,7 +14,7 @@
       condition: event.body.Records is selectattr('eventName', '==', 'ObjectCreated:Put')
       action:
         debug:
-          msg: event.body
+          msg: "{{ event.body }}"
         
         #run_job_template:
         #  name: Cat Fact
