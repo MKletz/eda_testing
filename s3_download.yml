@@ -3,17 +3,12 @@
   connection: local
   gather_facts: false
   tasks:
-  
-  - name: Print
-    ansible.builtin.debug:
-      var: ansible_eda.event.body.Records
-
 
   - name: Get new files from S3
     amazon.aws.s3_object:
       bucket: "{{ s3_bucket_name }}"
       region: "{{ region }}"
       object: "/{{ item.s3.object.key }}"
-      dest: "/usr/local/{{ item.s3.object.key }}"
+      dest: "/tmp/{{ item.s3.object.key }}"
       mode: get
     with_items: "{{ ansible_eda.event.body.Records }}"
