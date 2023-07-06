@@ -1,14 +1,8 @@
 ---
-- hosts: jump01.mikekletz.com
+- hosts: localhost
+  connection: local
   gather_facts: false
-  become: true
   tasks:
-
-  - name: Install AWS Python packages
-    pip:
-      name:
-        - botocore
-        - boto3
 
   - name: Get new files from S3
     amazon.aws.s3_object:
@@ -18,3 +12,9 @@
       dest: "/tmp/{{ item.s3.object.key }}"
       mode: get
     with_items: "{{ ansible_eda.event.body.Records }}"
+
+
+  - name: Find file
+    ansible.builtin.find:
+      paths: /tmp
+      patterns: '*.yml'
