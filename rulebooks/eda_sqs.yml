@@ -16,7 +16,3 @@
         run_job_template:
           name: "AWS / EDA S3 download"
           organization: Default
-          job_args:
-              extra_vars:
-                file_names: "{{ event.body.Records }}"
-                test: "test"
