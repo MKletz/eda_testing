@@ -13,7 +13,6 @@
       mode: get
     with_items: "{{ ansible_eda.event.body.Records }}"
 
-
   - name: Find file
     ansible.builtin.find:
       paths: /tmp
