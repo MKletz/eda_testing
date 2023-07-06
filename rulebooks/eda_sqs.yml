@@ -18,5 +18,5 @@
           organization: Default
           job_args:
               extra_vars:
-                sqs_records: "{{ event.body.Records }}"
+                #file_names: "{{ event.body.Records }}"
                 test: "poop"
