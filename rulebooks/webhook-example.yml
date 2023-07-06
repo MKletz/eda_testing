@@ -8,14 +8,20 @@
         delay_seconds: 10
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
+      filters:
+        json_filter:
+          include_keys: ['eventName']
 
   rules:
     - name: Run template
-      condition: "{{ event.body.Records[0].eventName }}" == 'ObjectCreated:Put'
+      condition: event.body != "poop"
       action:
-        run_job_template:
-          name: Cat Fact
-          organization: Default
-          job_args:
-              extra_vars:
-                eda_event_body: "{{ event.body }}"
+        debug:
+          msg: event.body
+        
+        #run_job_template:
+        #  name: Cat Fact
+        #  organization: Default
+        #  job_args:
+        #      extra_vars:
+        #        eda_event_body: "{{ event.body }}"
