@@ -13,12 +13,10 @@
     - name: Run template
       condition: event.body.Records is selectattr('eventName', '==', 'ObjectCreated:Put')
       action:
-        #debug:
-        #  msg: "{{ event.body }}"
-        
         run_job_template:
           name: "AWS / EDA S3 download"
           organization: Default
           job_args:
               extra_vars:
                 sqs_records: "{{ event.body.Records }}"
+                test: "poop"
