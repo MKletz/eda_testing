@@ -8,7 +8,7 @@
     amazon.aws.s3_object:
       bucket: "{{ item.s3.bucket.name }}"
       region: "{{ item.awsRegion }}"
-      object: "/{{ item.s3.object.key }}"
+      object: "{{ item.s3.object.key }}"
       dest: "/tmp/{{ item.s3.object.key }}"
       mode: get
     with_items: "{{ ansible_eda.event.body.Records }}"
