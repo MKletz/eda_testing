@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+
+  - name: Create S3 bucket 
+    amazon.aws.s3_bucket:
+      name: "{{ s3_bucket_name }}"
+      region: "{{ region }}"
+      state: absent
+      force: true
+
+  - name: SQS queue allowing s3 bucket notifications
+    sqs_queue:
+      name: "eda_s3_notifications"
+      region: "{{ region }}"
+      state: abset
