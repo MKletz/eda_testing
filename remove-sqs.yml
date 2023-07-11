@@ -4,15 +4,15 @@
   gather_facts: false
   tasks:
 
-  - name: Create S3 bucket 
+  - name: Remove S3 bucket 
     amazon.aws.s3_bucket:
       name: "{{ s3_bucket_name }}"
       region: "{{ region }}"
       state: absent
       force: true
 
-  - name: SQS queue allowing s3 bucket notifications
+  - name: Remove SQS queue
     sqs_queue:
       name: "eda_s3_notifications"
       region: "{{ region }}"
-      state: abset
+      state: absent
