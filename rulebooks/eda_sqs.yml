@@ -8,9 +8,6 @@
         delay_seconds: 10
         access_key: "{{ access_key }}"
         secret_key: "{{ secret_key }}"
-      filters:
-        - ansible.eda.insert_hosts_to_meta:
-            host_path: event.body
 
   rules:
     - name: Run template
