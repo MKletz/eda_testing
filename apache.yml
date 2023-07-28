@@ -3,12 +3,23 @@
   gather_facts: true
   become: true
   tasks:
-  - name: Install Apache
-    dnf:
-      name: 'httpd'
-      state: latest
-
-  - name: Verify Apache is running
-    ansible.builtin.service:
-      name: httpd
-      state: started
+    - name: httpd installed
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
+    - name: custom index.html
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        content: |
+          Custom Web Page          
+    - name: httpd service enabled
+      ansible.builtin.service:
+        name: httpd
+        enabled: true
+        state: started
+    - name: open firewall
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
