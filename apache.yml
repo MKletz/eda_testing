@@ -10,5 +10,5 @@
 
   - name: Verify Apache is running
     ansible.builtin.service:
-    name: httpd
-    state: started
+      name: httpd
+      state: started
