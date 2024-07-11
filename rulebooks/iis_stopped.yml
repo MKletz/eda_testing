@@ -16,3 +16,4 @@
           job_args:
             extra_vars:
               host: event.result.ComputerName
+              survey_site_source: "https://www.free-css.com/assets/files/free-css-templates/download/page281/koppee.zip"
