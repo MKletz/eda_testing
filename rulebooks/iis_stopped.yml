@@ -13,3 +13,6 @@
         run_job_template:
           name: "WINDOWS // Deploy IIS"
           organization: Default
+          job_args:
+            extra_vars:
+              host: event.result.ComputerName
