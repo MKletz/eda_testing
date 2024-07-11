@@ -1,10 +1,10 @@
 ---
 - name: Listen for webhook from Splunk
-  hosts: localhost
+  hosts: all
   sources:
     - ansible.eda.webhook:
-        host: 127.0.0.1
-        port: 31234
+        host: 0.0.0.0
+        port: 5000
 
   rules:
     - name: Run template
