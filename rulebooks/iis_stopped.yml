@@ -1,0 +1,14 @@
+---
+- name: Listen for webhook from Splunk
+  hosts: localhost
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 31234
+
+  rules:
+    - name: Run template
+      action:
+        run_job_template:
+          name: "WINDOWS // Deploy IIS"
+          organization: Default
